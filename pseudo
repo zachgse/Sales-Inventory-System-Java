@@ -1,0 +1,57 @@
+CONTEXT:
+crud about chilli garlic
+boy kahang (name ng system)
+with admin side 
+-record sales (gastos = 17000, 200,000 chilli garlic then compute net profit) 
+-can compare net profit last month and this current month (in percentage)
+-project the difference of sales between monthly basis
+-inventory management system
+
+CLASSES/TABLES:
+- Sales
+- Inventory (id, name, amount, status, created_at)
+-Inventory History (id, inventory_id, amount, type, created_at)
+
+PACKAGES:
+- Model
+- JDBC
+- DAO
+ > InventoryDao
+   > Can perform Create, Select (View all), Read (Select per item), Update 1 (Update name),
+     Update 2 (amount)
+ > SalesDao
+   > Can perform Create, Select (View all), Read (Select per item), Total 1(net profit), Total 2 (net loss),
+     Total 3 (net gross) 
+- Controllers
+	>Should only be one, but uri throws error (settle for 1 servlet per action)
+
+FLOW: INVENTORY MANAGEMENT SYSTEM
+1. Store of new data 
+	*- Validations: Existing name (to prevent multiple records), Negative values (can only accept positive values which means the stock first
+		before it gets used
+	*- Every new data, inventory history data will be created (FK) 
+	*- uc:first before storing the data
+2. For updating info
+    *- Can only change name (use the validations of existing name)
+    *- uc:first before storing the data
+3. for updating amount
+    *- Will enter new inventory history data with parameters (id, inventory_id, type, amount, date)
+    *- Helper 1: be able to check if the current stocks is > incoming decrement stocks 
+    	> the helper must check the type of the inventory history data entry (increment, decrement)
+    	> if current stocks > incoming decrement = subtract else, return false validation
+    *- Helper 2: be able to check the status of the product, if the total_amount after the computation
+    	is 0, status should be false or unavailable else status should be true or available
+
+
+SALES:
+1. Store of new data
+	*- 3 input fields : Amount, Type (Either net gross or net income), Date
+		> Validation wherein only 1 month in 1 year per sales
+	*- System can display total amount of sales 
+	- System can compare the profit between months (ex. last month and this current month) in percentage
+		> 2 inputs (1st month and 2nd month)
+		> divide by 100 each month (ex. 2000 
+
+
+
+

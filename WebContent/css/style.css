@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.navbar {
+	background-color: #6C91BF !important;
+	color: white !important;
+}
+
+.navbar-brand, #nav-item {
+	color: white !important;
+}
+
+section {
+	min-height: 100vh;
+}
+
+.button-link {
+	color: white !important;
+	text-decoration: none;
+}
+
+.button-link:hover {
+	color: white !important;
+	text-decoration: none;
+	opacity: 0.9;
+}
+
+.card-form {
+	min-height: 600px;
+	width: 600px;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+.text-red {
+	color: red;
+}
+
+.text-green {
+	color: green;
+}
